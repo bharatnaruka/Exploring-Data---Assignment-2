@@ -1,0 +1,18 @@
+emissiondata <- readRDS("summarySCC_PM25.rds")
+
+baltimoreData <- emissiondata[emissiondata$fips == "24510",]
+
+consolidated <- data.frame(tapply(baltimoreData$Emission, baltimoreData$year, sum))
+
+names(consolidated) <- "Total.Emission"
+
+consolidated$Year <- row.names(consolidated)
+
+
+png("plot2.png")
+
+plot(consolidated$Year, consolidated$Total.Emission, type="l", xlab="Year", ylab="PM2.5 Emission (tons)", main="Baltimore County - PM2.5 Emission Trend")
+
+dev.off()
+
+hello

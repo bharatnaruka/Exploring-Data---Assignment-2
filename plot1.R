@@ -1,0 +1,13 @@
+emissiondata <- readRDS("summarySCC_PM25.rds")
+
+consolidated <- data.frame(tapply(emissiondata$Emission, emissiondata$year, sum))
+
+names(consolidated) <- "Total.Emission"
+
+consolidated$Year <- row.names(consolidated)
+
+png("plot1.png")
+
+plot(consolidated$Year, consolidated$Total.Emission, type="l", xlab="Year", ylab="Total PM2.5 Emission (tons)", main="United States - PM2.5 Emission Trend")
+
+dev.off()
