@@ -12,3 +12,4 @@ plot(consolidated$Year, consolidated$Total.Emission, type="l", xlab="Year", ylab
 
 dev.off()
 
+done
